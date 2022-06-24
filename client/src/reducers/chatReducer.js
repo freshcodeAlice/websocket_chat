@@ -9,7 +9,7 @@ const initialState = {
 export default function chatReducer(state = initialState, action) {
     switch (action.type) {
 
-       case CREATE_MESSAGE_SUCCESS: {
+       case ACTIONS.CREATE_MESSAGE_SUCCESS: {
         const {payload: {message}} = action;
         return {
             ...state, 
@@ -17,22 +17,23 @@ export default function chatReducer(state = initialState, action) {
             messages: [...state.messages, message]
         }
        }
-       case GET_MESSAGE_ERROR:
-       case CREATE_MESSAGE_ERROR: {
+       case ACTIONS.GET_MESSAGE_ERROR:
+       case ACTIONS.CREATE_MESSAGE_ERROR: {
         const {payload: {error}} = action;
         return {
             ...state,
+            isFetching:false,
             error: error
         }
        }
     
-       case GET_MESSAGE_REQUEST: {
+       case ACTIONS.GET_MESSAGE_REQUEST: {
         return {
             ...state,
             isFetching: true
         }
        }
-       case GET_MESSAGE_SUCCESS: {
+       case ACTIONS.GET_MESSAGE_SUCCESS: {
         const {payload: {message}} = action;
         return {
             ...state, 

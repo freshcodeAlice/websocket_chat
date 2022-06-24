@@ -14,7 +14,7 @@ socket.on(SOCKET_EVENTS.NEW_MESSAGE, (msg) => {
     store.dispatch(ActionCreators.createMessageSuccess(msg))
 });
 
-socket.on(SOCKET_EVENTS.NEW_MESSAGE_ERROR, () => {
+socket.on(SOCKET_EVENTS.NEW_MESSAGE_ERROR, (error) => {
     store.dispatch(ActionCreators.createMessageError(error))
 });
 

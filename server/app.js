@@ -8,8 +8,9 @@ app.use(cors());
 
 app.get('/', async (req, res, next) => {
     try {
-        const msges = await Message.find({}); // TODO: pagination
-        res.status(200).send(msges)
+        console.log('get msges')
+        const msges = await Message.find(); // TODO: pagination
+        res.status(200).send({data: msges})
     } catch(error) {
         next(error)
     }
